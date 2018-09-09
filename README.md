@@ -3,7 +3,7 @@
 
 # 效果
 
-![](https://github.com/zuohp/ProgressRingDemo/raw/master/gif/video.gif)
+![](https://github.com/zuohp/My_Clock/raw/master/gif/video.gif)
 
 
 ##[详情见博客](https://blog.csdn.net/z_Xiaozuo/article/details/82560260) 
