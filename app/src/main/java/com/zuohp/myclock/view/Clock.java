@@ -38,11 +38,14 @@ public class Clock extends View {
     //    当前时间 时，分，秒
     private float mH,mM,mS;
 
+    /**
+     * 定时器
+     */
     private Timer mTimer=new Timer();
     private TimerTask task = new TimerTask() {
         @Override
-        public void run() {//具体的定时任务逻辑
-            if (mS == 360) {//因为圆一圈为360度，所以走满一圈角度清零
+        public void run() {
+            if (mS == 360) {
                 mS = 0;
             }
             if (mM == 360){
@@ -51,9 +54,11 @@ public class Clock extends View {
             if (mH == 360){
                 mH = 0;
             }
+            //具体计算
             mS = mS + 6;
             mM = mM + 0.1f;
-            mH = mH + 1.0f/240;
+            mH = mH + 1.0f/120;
+            //子线程用postInvalidate
             postInvalidate();
         }
     };
@@ -195,8 +200,11 @@ public class Clock extends View {
         super.onDraw(canvas);
         //先设置画布为view的中心点
         canvas.translate(mCenterX,mCenterY);
+        //绘制外圆和刻度
         drawCircle(canvas);
+        //绘制数字
         drawNums(canvas);
+        //绘制时针，分针，秒针和中间小圆点
         drawPointer(canvas);
     }
 
@@ -219,6 +227,7 @@ public class Clock extends View {
                 mCirclePaint.setColor(mSColor);
                 canvas.drawLine(0,-mClockRadius+mClockRingWidth/2,0,-mClockRadius+mDefaultLength,mCirclePaint);
             }
+//            通过旋转画布的方式快速设置刻度
             canvas.rotate(6);
         }
     }
@@ -252,7 +261,8 @@ public class Clock extends View {
     }
 
     /**
-     * 绘制指针
+     * 绘制指针，每次绘制完恢复画布状态，使用 save 和 restore 方法
+     * 指针长短根据半径长度进行计算
      * @param canvas
      */
     private void drawPointer(Canvas canvas) {
