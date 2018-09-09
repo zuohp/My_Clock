@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <com.zuohp.myclock.view.Clock
+        android:id="@+id/clock_view"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        app:mClockRingWidth="4dp"
+        app:mDefaultWidth="1dp"
+        app:mDefaultLength="8dp"
+        app:mSpecialWidth="2dp"
+        app:mSpecialLength="14dp"
+        app:mHWidth="6dp"
+        app:mMWidth="4dp"
+        app:mSWidth="2dp"
+        app:mCircleColor="@android:color/holo_red_light"
+        app:mHColor="@android:color/black"
+        app:mMColor="@android:color/black"
+        app:mSColor="@android:color/holo_red_light"
+        app:mNumColor="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/clock_view">
+
+        <EditText
+            android:id="@+id/edit1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+
+            android:hint="时"/>
+
+        <EditText
+            android:id="@+id/edit2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:hint="分"/>
+
+        <EditText
+            android:id="@+id/edit3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+
+            android:hint="秒"/>
+    </LinearLayout>
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:text="设置时间"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/ll"
+        />
+
+</android.support.constraint.ConstraintLayout>
